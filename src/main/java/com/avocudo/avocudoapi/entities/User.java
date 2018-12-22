@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
@@ -18,7 +19,7 @@ import lombok.Data;
 @MappedSuperclass
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "username", nullable = false)
@@ -30,7 +31,7 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
     @Column(name = "registration_date")
-    private Date createdOn;
+    private Date registrationDate;
 
     @Column(name = "avatar_url")
     private String avatarUrl;

@@ -1,6 +1,14 @@
 package com.avocudo.avocudoapi.config;
 
+import com.avocudo.avocudoapi.entities.Comment;
+import com.avocudo.avocudoapi.entities.Ingredient;
+import com.avocudo.avocudoapi.entities.Meal;
 import com.avocudo.avocudoapi.entities.Owner;
+import com.avocudo.avocudoapi.entities.Rating;
+import com.avocudo.avocudoapi.entities.RegularUser;
+import com.avocudo.avocudoapi.entities.Report;
+import com.avocudo.avocudoapi.entities.Restaurant;
+import com.avocudo.avocudoapi.entities.RestaurantChain;
 
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.context.ApplicationContext;
@@ -18,6 +26,7 @@ public class IdExposer extends RepositoryRestMvcConfiguration {
 
     @Override
     public RepositoryRestConfiguration repositoryRestConfiguration() {
-        return super.repositoryRestConfiguration().exposeIdsFor(Owner.class);
+        return super.repositoryRestConfiguration().exposeIdsFor(Comment.class, Ingredient.class, Meal.class,
+                Owner.class, Rating.class, RegularUser.class, Report.class, Restaurant.class, RestaurantChain.class);
     }
 }
