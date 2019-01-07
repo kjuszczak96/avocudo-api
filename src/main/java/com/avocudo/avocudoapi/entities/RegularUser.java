@@ -13,7 +13,6 @@ import lombok.EqualsAndHashCode;
 
 @Entity(name = "RegularUser")
 @Table(name = "regular_user")
-@EqualsAndHashCode(callSuper = true)
 @Data
 public class RegularUser extends User {
     @OneToMany(mappedBy = "sender")
@@ -27,4 +26,8 @@ public class RegularUser extends User {
     @OneToMany(mappedBy = "sender")
     @Column(name = "ratings")
     List<Rating> ratings = new ArrayList<Rating>();
+
+    RegularUser() {
+        type = "regular";
+    }
 }

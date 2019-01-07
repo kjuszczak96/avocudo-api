@@ -23,4 +23,8 @@ public class Owner extends User {
     @OneToMany(mappedBy = "owner")
     @Column(name = "restaurans")
     List<Restaurant> restaurants = new ArrayList<Restaurant>();
+
+    Owner() {
+        type = "owner";
+    }
 }
