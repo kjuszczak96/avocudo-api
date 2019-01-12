@@ -20,7 +20,7 @@ import lombok.Data;
 @Data
 public class RestaurantChain {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name", nullable = false)
@@ -36,4 +36,7 @@ public class RestaurantChain {
     @OneToMany(mappedBy = "restaurant_chain")
     @Column(name = "restaurants")
     List<Restaurant> restaurants = new ArrayList<Restaurant>();
+
+    @Column(name = "image_url")
+    private String imageUrl;
 }

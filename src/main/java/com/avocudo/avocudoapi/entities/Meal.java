@@ -23,7 +23,7 @@ import lombok.Data;
 @Data
 public class Meal {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name", nullable = false)
@@ -61,4 +61,7 @@ public class Meal {
     @OneToMany(mappedBy = "meal")
     @Column(name = "comments")
     List<Comment> comments = new ArrayList<Comment>();
+
+    @Column(name = "image_url")
+    private String imageUrl;
 }

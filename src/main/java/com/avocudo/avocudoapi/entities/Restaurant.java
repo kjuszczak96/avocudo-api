@@ -21,7 +21,7 @@ import lombok.Data;
 @Data
 public class Restaurant {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "city", nullable = false)
@@ -50,4 +50,7 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant")
     @Column(name = "meals")
     List<Meal> meals = new ArrayList<Meal>();
+
+    @Column(name = "image_url")
+    private String imageUrl;
 }
