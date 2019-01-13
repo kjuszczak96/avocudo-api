@@ -45,8 +45,9 @@ public class Restaurant {
 
     @ManyToOne
     @JoinColumn(name = "restaurant_chain_id")
-    private RestaurantChain restaurant_chain;
+    private RestaurantChain restaurantChain;
 
+    @JsonIgnoreProperties("restaurant")
     @OneToMany(mappedBy = "restaurant")
     @Column(name = "meals")
     List<Meal> meals = new ArrayList<Meal>();

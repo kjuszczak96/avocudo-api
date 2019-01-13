@@ -23,7 +23,7 @@ public class RestaurantChain {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", nullable = false, unique = true)
     private String name;
 
     @Column(name = "description", nullable = false)
@@ -33,6 +33,7 @@ public class RestaurantChain {
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
+    @JsonIgnoreProperties("restaurantChain")
     @OneToMany(mappedBy = "restaurant_chain")
     @Column(name = "restaurants")
     List<Restaurant> restaurants = new ArrayList<Restaurant>();

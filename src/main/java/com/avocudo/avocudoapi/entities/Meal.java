@@ -50,14 +50,17 @@ public class Meal {
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
+    @JsonIgnoreProperties("meal")
     @OneToMany(mappedBy = "meal")
     @Column(name = "reports")
     List<Report> reports = new ArrayList<Report>();
 
+    @JsonIgnoreProperties("meal")
     @OneToMany(mappedBy = "meal")
     @Column(name = "ratings")
     List<Rating> ratings = new ArrayList<Rating>();
 
+    @JsonIgnoreProperties("meal")
     @OneToMany(mappedBy = "meal")
     @Column(name = "comments")
     List<Comment> comments = new ArrayList<Comment>();
