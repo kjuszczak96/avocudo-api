@@ -15,6 +15,8 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity(name = "RestaurantChain")
 @Table(name = "restaurant_chain")
 @Data
@@ -34,7 +36,7 @@ public class RestaurantChain {
     private Owner owner;
 
     @JsonIgnoreProperties("restaurantChain")
-    @OneToMany(mappedBy = "restaurant_chain")
+    @OneToMany(mappedBy = "restaurantChain")
     @Column(name = "restaurants")
     List<Restaurant> restaurants = new ArrayList<Restaurant>();
 

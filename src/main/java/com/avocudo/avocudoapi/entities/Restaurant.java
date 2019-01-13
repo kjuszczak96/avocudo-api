@@ -16,6 +16,8 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity(name = "Restaurant")
 @Table(name = "restaurant")
 @Data
