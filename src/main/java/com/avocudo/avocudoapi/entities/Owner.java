@@ -28,7 +28,7 @@ public class Owner extends User {
     @Column(name = "restaurans")
     List<Restaurant> restaurants = new ArrayList<Restaurant>();
 
-    Owner() {
+    public Owner() {
         type = "owner";
     }
 }

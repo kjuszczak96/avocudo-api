@@ -11,6 +11,7 @@ import com.avocudo.avocudoapi.entities.RegularUser;
 import com.avocudo.avocudoapi.repositories.UserRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,24 +24,18 @@ public class AuthenticationController {
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationController.class);
 
     @Autowired
-	private UserRepo userRepo;
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserRepo userRepo;
 
     @GetMapping("/matchPassword")
     public boolean matchPassword(@RequestParam("username") String username, @RequestParam("password") String password) {
         boolean result = false;
         for (User user : userRepo.findByUsername(username)) {
-            if (user.getPassword().equals(password)) {
+            if (passwordEncoder.matches(password, user.getPassword())) {
                 result=true;
             }
-        }
-        return result;
-    }
-
-    @GetMapping("/getPassword")
-    public String matchPassword(@RequestParam("username") String username) {
-        String result = "User not found";
-        for (User user : userRepo.findByUsername(username)) {
-            result = user.getPassword();
         }
         return result;
     }
