@@ -16,9 +16,5 @@ public class RestMealController {
 
     @Autowired
     private MealRepo mealRepo;
-    
-    @GetMapping("/meals/{mealId}")
-    public Optional<Meal> getMeal(@PathVariable Long mealId) {
-        return mealRepo.findById(mealId);
-    }
+
 }

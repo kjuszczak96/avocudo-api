@@ -21,7 +21,7 @@ public class RegistrationController {
     @Autowired
     private UserRepo userRepo;
     
-    @PostMapping("/regularUsers")
+    @PostMapping("/register/regularUser")
     public User registerNewRegularUser(@RequestBody UserDto userDto) {
         User user = new RegularUser();
         user.setAvatarUrl(userDto.getAvatarUrl());
@@ -30,7 +30,7 @@ public class RegistrationController {
         return userRepo.save(user);
     }
 
-    @PostMapping("/owners")
+    @PostMapping("/register/owner")
     public User registerNewOwner(@RequestBody UserDto userDto) {
         User user = new Owner();
         user.setAvatarUrl(userDto.getAvatarUrl());

@@ -29,22 +29,13 @@ public class AuthenticationController {
     @Autowired
     private UserRepo userRepo;
 
-    @GetMapping("/matchPassword")
-    public User matchPassword(@RequestParam("username") String username, @RequestParam("password") String password) {
-        User result = null;
+    @GetMapping("/login")
+    public Optional<User> login(@RequestParam("username") String username, @RequestParam("password") String password) {
         for (User user : userRepo.findByUsername(username)) {
             if (passwordEncoder.matches(password, user.getPassword())) {
-                result = user;
+                return Optional.of(user);
             }
         }
-        return result;
-    }
-
-    @GetMapping("/getUserByUsername")
-    public Optional<User> getUserByUsername(@RequestParam("username") String username) {
-        for (User user : userRepo.findByUsername(username)) {
-            return userRepo.findById(user.getId());
-        }
-        return null;
+        return Optional.empty();
     }
 }

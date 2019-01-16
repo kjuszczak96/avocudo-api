@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -17,10 +19,12 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class Owner extends User {
+    @JsonIgnore
     @OneToMany(mappedBy = "owner")
     @Column(name = "restaurant_chains")
     List<RestaurantChain> restaurantChains = new ArrayList<RestaurantChain>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "owner")
     @Column(name = "restaurans")
     List<Restaurant> restaurants = new ArrayList<Restaurant>();
