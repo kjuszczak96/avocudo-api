@@ -13,13 +13,10 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity(name = "Rating")
 @Table(name = "rating")
 @Data
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class Rating {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

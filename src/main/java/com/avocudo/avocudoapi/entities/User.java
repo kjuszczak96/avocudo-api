@@ -17,13 +17,10 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import lombok.Data;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity(name = "User")
 @Data
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public abstract class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
