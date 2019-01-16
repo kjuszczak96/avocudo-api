@@ -16,8 +16,6 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 @Entity(name = "Restaurant")
 @Table(name = "restaurant")
 @Data
@@ -41,17 +39,14 @@ public class Restaurant {
     @Column(name = "close_hour")
     private Date closeHour;
 
-    @JsonIgnoreProperties("restaurants")
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
-    @JsonIgnoreProperties("restaurants")
     @ManyToOne
     @JoinColumn(name = "restaurant_chain_id")
     private RestaurantChain restaurantChain;
 
-    @JsonIgnoreProperties("restaurant")
     @OneToMany(mappedBy = "restaurant")
     @Column(name = "meals")
     List<Meal> meals = new ArrayList<Meal>();
