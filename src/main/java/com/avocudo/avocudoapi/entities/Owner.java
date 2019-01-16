@@ -11,10 +11,14 @@ import javax.persistence.Table;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity(name = "Owner")
 @Table(name = "owner")
 @EqualsAndHashCode(callSuper = true)
 @Data
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property="@id")
 public class Owner extends User {
     @OneToMany(mappedBy = "owner")
     @Column(name = "restaurant_chains")
