@@ -30,11 +30,11 @@ public class AuthenticationController {
     private UserRepo userRepo;
 
     @GetMapping("/matchPassword")
-    public boolean matchPassword(@RequestParam("username") String username, @RequestParam("password") String password) {
-        boolean result = false;
+    public User matchPassword(@RequestParam("username") String username, @RequestParam("password") String password) {
+        User result = null;
         for (User user : userRepo.findByUsername(username)) {
             if (passwordEncoder.matches(password, user.getPassword())) {
-                result=true;
+                result = user;
             }
         }
         return result;

@@ -41,10 +41,12 @@ public class Restaurant {
     @Column(name = "close_hour")
     private Date closeHour;
 
+    @JsonIgnoreProperties("restaurants")
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
+    @JsonIgnoreProperties("restaurants")
     @ManyToOne
     @JoinColumn(name = "restaurant_chain_id")
     private RestaurantChain restaurantChain;

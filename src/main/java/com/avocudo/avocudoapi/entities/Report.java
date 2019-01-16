@@ -13,6 +13,8 @@ import javax.persistence.Table;
 
 import lombok.Data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity(name = "Report")
 @Table(name = "report")
 @Data
@@ -33,10 +35,12 @@ public class Report {
     @Column(name = "content")
     private String content;
 
+    @JsonIgnoreProperties("reports")
     @ManyToOne
     @JoinColumn(name = "sender_id")
     private RegularUser sender;
 
+    @JsonIgnoreProperties("reports")
     @ManyToOne
     @JoinColumn(name = "meal_id")
     private Meal meal;

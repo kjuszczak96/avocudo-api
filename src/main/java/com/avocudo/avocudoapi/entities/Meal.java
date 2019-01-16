@@ -31,12 +31,6 @@ public class Meal {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "restaurant_address", nullable = false)
-    private String restaurantAddress;
-
-    @Column(name = "restaurant_city", nullable = false)
-    private String restaurantCity;
-
     @Column(name = "category")
     private String category;
 
@@ -48,6 +42,7 @@ public class Meal {
     @Column(name = "restaurant_chains")
     List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
+    @JsonIgnoreProperties("meals")
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;

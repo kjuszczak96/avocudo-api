@@ -31,6 +31,7 @@ public class RestaurantChain {
     @Column(name = "description", nullable = false)
     private String description;
 
+    @JsonIgnoreProperties("restaurantChains")
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private Owner owner;
