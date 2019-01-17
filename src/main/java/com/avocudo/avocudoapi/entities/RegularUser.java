@@ -3,6 +3,7 @@ package com.avocudo.avocudoapi.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -19,17 +20,17 @@ import lombok.EqualsAndHashCode;
 @Data
 public class RegularUser extends User {
     @JsonIgnore
-    @OneToMany(mappedBy = "sender")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "sender")
     @Column(name = "comments")
     List<Comment> comments = new ArrayList<Comment>();
 
     @JsonIgnore
-    @OneToMany(mappedBy = "sender")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "sender")
     @Column(name = "reports")
     List<Report> reports = new ArrayList<Report>();
 
     @JsonIgnore
-    @OneToMany(mappedBy = "sender")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "sender")
     @Column(name = "ratings")
     List<Rating> ratings = new ArrayList<Rating>();
 

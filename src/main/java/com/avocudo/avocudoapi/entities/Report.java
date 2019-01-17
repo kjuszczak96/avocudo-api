@@ -35,10 +35,10 @@ public class Report {
     private String content;
 
     @ManyToOne
-    @JoinColumn(name = "sender_id")
+    @JoinColumn(name = "sender_id", nullable = false)
     private RegularUser sender;
 
     @ManyToOne
-    @JoinColumn(name = "meal_id")
+    @JoinColumn(name = "meal_id", nullable = false)
     private Meal meal;
 }

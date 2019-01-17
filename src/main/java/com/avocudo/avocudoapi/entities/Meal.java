@@ -42,18 +42,18 @@ public class Meal {
     List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
     @ManyToOne
-    @JoinColumn(name = "restaurant_id")
+    @JoinColumn(name = "restaurant_id", nullable = false)
     private Restaurant restaurant;
 
-    @OneToMany(mappedBy = "meal")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "meal")
     @Column(name = "reports")
     List<Report> reports = new ArrayList<Report>();
 
-    @OneToMany(mappedBy = "meal")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "meal")
     @Column(name = "ratings")
     List<Rating> ratings = new ArrayList<Rating>();
 
-    @OneToMany(mappedBy = "meal")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "meal")
     @Column(name = "comments")
     List<Comment> comments = new ArrayList<Comment>();
 

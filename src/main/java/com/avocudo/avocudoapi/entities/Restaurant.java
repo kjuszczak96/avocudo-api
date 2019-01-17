@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,24 +32,24 @@ public class Restaurant {
     @Column(name = "address", nullable = false)
     private String address;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "open_hour")
-    private Date openHour;
+    private String openHour;
 
     @Column(name = "close_hour")
-    private Date closeHour;
+    private String closeHour;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id")
+    @JoinColumn(name = "owner_id", nullable = false)
     private Owner owner;
 
     @ManyToOne
     @JoinColumn(name = "restaurant_chain_id")
     private RestaurantChain restaurantChain;
 
-    @OneToMany(mappedBy = "restaurant")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "restaurant")
     @Column(name = "meals")
     List<Meal> meals = new ArrayList<Meal>();
 

@@ -3,6 +3,7 @@ package com.avocudo.avocudoapi.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,10 +32,10 @@ public class RestaurantChain {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "owner_id")
+    @JoinColumn(name = "owner_id", nullable = false)
     private Owner owner;
 
-    @OneToMany(mappedBy = "restaurantChain")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "restaurantChain")
     @Column(name = "restaurants")
     List<Restaurant> restaurants = new ArrayList<Restaurant>();
 
