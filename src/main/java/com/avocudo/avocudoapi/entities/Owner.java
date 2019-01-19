@@ -17,7 +17,6 @@ import lombok.EqualsAndHashCode;
 
 @Entity(name = "Owner")
 @Table(name = "owner")
-@EqualsAndHashCode(callSuper = true)
 @Data
 public class Owner extends User {
     @JsonIgnore
